@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Passport::ignoreRoutes();
+        Passport::ignoreRoutes();
     }
 
     /**
@@ -26,6 +26,14 @@ class AppServiceProvider extends ServiceProvider
         Passport::tokensExpireIn(CarbonInterval::days(15));
         Passport::refreshTokensExpireIn(CarbonInterval::days(30));
         Passport::personalAccessTokensExpireIn(CarbonInterval::months(6));
+
+        Passport::tokensCan([
+            'students:read' => 'Recibir informacion de todos los estudiantes',
+            'teachers:read' => 'Recibir informacion de todos los profesores',
+            'developers:read' => 'Recibir informacion de todos los desarrolladores/admins',
+            'user' => 'Brindar informacion de todo usuario sin incluir correo electronico',
+            'email' => 'Brindar correo electronico',
+        ]);
 
         // By providing a view name...
         Passport::authorizationView('auth.oauth.authorize');

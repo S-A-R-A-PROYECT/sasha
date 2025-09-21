@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\OAuth\CustomGuard;
 use App\Http\Middleware\RedirectIfAuthenticatedAny;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -10,13 +11,15 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__ . '/../routes/web.php',
         api: __DIR__ . '/../routes/api.php',
         commands: __DIR__ . '/../routes/console.php',
-        health: '/up',
+        health: '/_heartbeat',
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
             'oauth/*'
         ]);
-        $middleware->append(RedirectIfAuthenticatedAny::class);
+        $middleware->alias([
+            'customGuard' => CustomGuard::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -8,7 +8,7 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Teachers extends Authenticatable
+class Teacher extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\TeachersFactory> */
     use HasFactory, HasApiTokens;

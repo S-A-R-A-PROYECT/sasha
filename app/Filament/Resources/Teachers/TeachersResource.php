@@ -7,7 +7,7 @@ use App\Filament\Resources\Teachers\Pages\EditTeachers;
 use App\Filament\Resources\Teachers\Pages\ListTeachers;
 use App\Filament\Resources\Teachers\Schemas\TeachersForm;
 use App\Filament\Resources\Teachers\Tables\TeachersTable;
-use App\Models\Teachers;
+use App\Models\Teacher;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -17,7 +17,7 @@ use UnitEnum;
 
 class TeachersResource extends Resource
 {
-    protected static ?string $model = Teachers::class;
+    protected static ?string $model = Teacher::class;
 
     // protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 

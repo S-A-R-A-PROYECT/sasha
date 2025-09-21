@@ -10,15 +10,16 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', Home::class)->name('home')->middleware('auth:student,teacher,developer');
+
+// PENDIENTE -> NO DETECTA GUARD AGAIIIN
 
 
 // Inicios de sesion
 Route::prefix('/login')->group(function () {
     Route::get('/student', StudentLogin::class)->name('login.student');
     Route::get('/teacher', TeacherLogin::class)->name('login.teacher');
-    Route::get('/admin', DeveloperLogin::class)->name('login.developer');
+    Route::get('/developer', DeveloperLogin::class)->name('login.developer');
 })->middleware(RedirectIfAuthenticatedAny::class);
 
 
@@ -35,7 +36,6 @@ Route::prefix('/login')->group(function () {
 //     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 // });
 
-require __DIR__ . '/auth.php';
 
 Route::middleware([
     'auth:sanctum',
@@ -46,3 +46,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+
+require __DIR__ . '/passport.php';
+require __DIR__ . '/auth.php';

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth\Student;
 
+use App\Models\Passport\Client;
 use Illuminate\Auth\Events\Lockout;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Url;
 use Livewire\Attributes\Validate;
 
 
@@ -23,6 +24,28 @@ class Login extends Component
 
     public bool $remember = false;
 
+
+    #[Url]
+    public $clientId;
+    #[Url]
+    public $redirect_uri;
+    #[Url]
+    public $response_type;
+    #[Url]
+    public $scope;
+    #[Url]
+    public $state;
+    #[Url]
+    public $passport;
+
+    public $client;
+
+    public function mount()
+    {
+        $this->client = Client::find($this->clientId) ?? null;
+    }
+
+
     public function login(): void
     {
         $this->validate();
@@ -30,12 +53,27 @@ class Login extends Component
         $this->ensureIsNotRateLimited();
 
         if (Auth::guard('student')->attempt(['document' => $this->document, 'password' => $this->password])) {
-            RateLimiter::clear($this->throttleKey());
             request()->session()->regenerate();
+            RateLimiter::clear($this->throttleKey());
 
 
-            $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+
+            if ($this->passport) {
+                $param = [
+                    'client_id' => $this->clientId,
+                    'redirect_uri' => $this->redirect_uri,
+                    'response_type' => $this->response_type,
+                    'scope' => $this->scope,
+                    'state' => $this->state,
+                ];
+
+                $this->redirectRoute('passport.authorizations.authorize', parameters: $param);
+            } else {
+                $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+            }
         }
+
+
         RateLimiter::hit($this->throttleKey());
 
         throw ValidationException::withMessages([

@@ -2,9 +2,13 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use App\Models\User;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Field;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 
 class UserForm
@@ -18,26 +22,22 @@ class UserForm
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()
-                    ->required(),
-                DateTimePicker::make('email_verified_at'),
+                    ->required()
+                    ->unique(table: User::class),
                 TextInput::make('password')
                     ->password()
-                    ->required(),
-                Textarea::make('two_factor_secret')
-                    ->default(null)
-                    ->columnSpanFull(),
-                Textarea::make('two_factor_recovery_codes')
-                    ->default(null)
-                    ->columnSpanFull(),
-                DateTimePicker::make('two_factor_confirmed_at'),
+                    ->revealable()
+                    ->confirmed(),
+                TextInput::make('password_confirmation')
+                    ->revealable()
+                    ->password(),
                 TextInput::make('last_login_ip')
-                    ->default(null),
+                    ->readOnly(),
                 DateTimePicker::make('last_login_at'),
-                TextInput::make('current_team_id')
-                    ->numeric()
-                    ->default(null),
-                TextInput::make('profile_photo_path')
-                    ->default(null),
+                FileUpload::make('profile_photo_path')
+                    ->disk('profile_photo')
+                    ->label('Profile Photo')
+                    ->avatar()
             ]);
     }
 }

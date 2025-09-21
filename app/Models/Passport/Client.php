@@ -9,6 +9,7 @@ use Laravel\Passport\Client as PassportClient;
 
 class Client extends PassportClient
 {
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id');

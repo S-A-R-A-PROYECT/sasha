@@ -32,6 +32,7 @@ class User extends Authenticatable implements OAuthenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path'
     ];
 
     /**

@@ -41,10 +41,24 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
+        ],
+
+        'sso' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/sso'),
+            'url' => env('APP_URL') . '/storage/sso',
+            'visibility' => 'public',
+        ],
+
+        'profile_photo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/profile_photo'),
+            'url' => env('APP_URL') . '/storage/profile_photo',
+            'visibility' => 'public',
         ],
 
         's3' => [
