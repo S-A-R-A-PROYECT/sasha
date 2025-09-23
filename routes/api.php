@@ -1,18 +1,28 @@
 <?php
 
-use App\Models\Teacher;
-use App\Models\User;
+use App\Http\Controllers\Api\DeveloperController;
+use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
+use Laravel\Passport\Http\Middleware\CheckToken;
 
 
 
-Route::get('/developers', function (Request $request) {
-    return User::all();
-});
+
+Route::apiResource('developers', DeveloperController::class)
+    ->only(['index', 'show'])
+    ->middleware([CheckToken::using('developers:read')]);
+
+Route::apiResource('teachers', TeacherController::class)
+    ->only(['index', 'show'])
+    ->middleware([CheckToken::using('teachers:read')]);
+
+Route::apiResource('students', StudentController::class)
+    ->only(['index', 'show'])
+    ->middleware([CheckToken::using('students:read')]);
+
 
 Route::get('/me', function (Request $request) {
     return Auth::user();

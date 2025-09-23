@@ -3,6 +3,27 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+
+
+if (! function_exists('metaData')) {
+    function metaData()
+    {
+        return [
+            "name" => "SASHA",
+            'developer' => "Julián Ramirez",
+            'project' => [
+                "for" => "COLEGIO O.E.A. 2025",
+                "SARA" => [
+                    'developers' => ["Ramiro Soler", "Santiago Parraga", "Julian Ramirez"]
+                ],
+                "System SHADOW" => [
+                    'developers' => ["Diyer Padilla", "Juan Pablo Gonzales", "Jeisson Polanco"]
+                ]
+            ],
+        ];
+    }
+}
+
 if (! function_exists('activeGuard')) {
     function activeGuard()
     {

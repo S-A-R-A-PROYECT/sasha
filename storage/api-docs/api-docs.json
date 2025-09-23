@@ -1,0 +1,111 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Sasha",
+        "description": "Todos los endpoints relacionados con SASHA, proyecto de grado de S.A.R.A y System Shadow (Colegio OEA PROM 2025)",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/developers": {
+            "get": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Mostrar desarrolladores",
+                "description": "Display a listing of the resource.",
+                "operationId": "8b48afac27e158ba88fe53b027c63e2d",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los desarolladores activos"
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/developers/{id}": {
+            "get": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Mostrar desarrollador especifico",
+                "description": "Display the specified resource.",
+                "operationId": "2914753d779ce0af118664037b37ffb0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar desarrollador especifico"
+                    }
+                }
+            }
+        },
+        "/api/teachers": {
+            "get": {
+                "tags": [
+                    "Teachers"
+                ],
+                "summary": "Mostrar desarrolladores",
+                "description": "Display a listing of the resource.",
+                "operationId": "4801180b90687df179efdc481c0aea4d",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los profesores activos"
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/teachers/{id}": {
+            "get": {
+                "tags": [
+                    "Teachers"
+                ],
+                "summary": "Mostrar desarrolladores",
+                "description": "Display the specified resource.",
+                "operationId": "82fa7dd53de02778f165b21923099699",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar desarrollador exacto por ID"
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Developers",
+            "description": "Todas las operaciones de desarrolladores"
+        },
+        {
+            "name": "Teachers",
+            "description": "Todas las operaciones de profesores"
+        }
+    ]
+}
