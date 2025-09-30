@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string("password");
             $table->integer("grade"); // NUMEROS ENTEROS
             $table->string("fingerprint");
-            $table->uuid("UUID"); // Indentificadores universales
-            $table->integer("document")->unique();
-            $table->string("document_type");
+            $table->uuid(); // Indentificadores universales
+            $table->integer("document")->unique()->nullable();
+            $table->string("document_type")->nullable();
 
             $table->string("last_login_ip")->nullable();
             $table->timestamp("last_login_at")->nullable();

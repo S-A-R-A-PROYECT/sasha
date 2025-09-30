@@ -27,7 +27,7 @@ class StudentFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'grade' => '1104',
             'fingerprint' => fake()->sha256(),
-            'UUID' => fake()->uuid(),
+            'uuid' => fake()->uuid(),
             'document' => fake()->numberBetween(1000000000, 1999999999),
             'document_type' => 'T.I',
         ];

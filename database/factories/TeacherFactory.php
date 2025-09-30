@@ -30,6 +30,7 @@ class TeacherFactory extends Factory
         $randomCase = $cases[$randomKey];
 
         return [
+            'uuid' => fake()->uuid(),
             'name' => fake()->name(),
             'last_name' => fake()->lastName(),
             'password' => static::$password ??= Hash::make('password'),

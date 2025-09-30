@@ -5,14 +5,9 @@ use App\Livewire\Auth\Developer\Login as DeveloperLogin;
 use App\Livewire\Auth\Student\Login as StudentLogin;
 use App\Livewire\Auth\Teacher\Login as TeacherLogin;
 use App\Livewire\Home;
-use App\Livewire\Settings\Appearance;
-use App\Livewire\Settings\Password;
-use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home')->middleware('auth:student,teacher,developer');
-
-// PENDIENTE -> NO DETECTA GUARD AGAIIIN
 
 
 // Inicios de sesion

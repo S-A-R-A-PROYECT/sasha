@@ -24,7 +24,6 @@ class ClientForm
                 ColorPicker::make('teacher_color'),
                 Repeater::make('redirect_uris')->schema([
                     TextInput::make('domain')
-                        ->url()
                         ->suffixIcon(Heroicon::GlobeAlt),
                 ])->mutateDehydratedStateUsing(fn($state) => collect($state)->pluck('domain')->filter()->values()->all())
                     ->dehydrateStateUsing(null) // desactiva la mutación automática inversa
