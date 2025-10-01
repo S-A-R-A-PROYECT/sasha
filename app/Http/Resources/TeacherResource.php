@@ -23,9 +23,10 @@ class TeacherResource extends JsonResource
             "email" => $this->email,
             "document" => $this->document,
             "document_type" => $this->document_type,
-            "rol" => $this->rol,
+            "type" => $this->rol,
             "last_login_ip" => $this->last_login_ip,
             "last_login_at" => $this->last_login_at,
+
         ];
     }
 }

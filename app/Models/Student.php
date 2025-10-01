@@ -22,4 +22,9 @@ class Student extends Authenticatable implements OAuthenticatable
     {
         return 'document';
     }
+
+    public function getTypeAttribute()
+    {
+        return 'student';
+    }
 }

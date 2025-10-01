@@ -24,6 +24,7 @@ class DeveloperResource extends JsonResource
             "fingerprint" => $this->fingerprint,
             "last_login_ip" => $this->last_login_ip,
             "last_login_at" => $this->last_login_at,
+            'type' => 'developer',
         ];
     }
 }
