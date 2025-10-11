@@ -24,6 +24,7 @@ class TeacherResource extends JsonResource
             "document" => $this->document,
             "document_type" => $this->document_type,
             "type" => $this->rol,
+            "link_qr_code" => asset(config('filesystems.disks.qr-teacher.url') . "/" . $this->uuid . '.png') ?? null,
             "last_login_ip" => $this->last_login_ip,
             "last_login_at" => $this->last_login_at,
 

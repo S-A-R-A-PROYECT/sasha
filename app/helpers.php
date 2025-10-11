@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
-
+use Illuminate\Support\Facades\Storage;
+use Picqer\Barcode\BarcodeGeneratorPNG;
 
 if (! function_exists('metaData')) {
     function metaData()
@@ -60,4 +61,8 @@ if (! function_exists('scopeTitle')) {
 
         return $map[$id] ?? ucfirst(str_replace(':', ' ', $id));
     }
+}
+
+
+if (!function_exists('generateStudentBarCodes')) {
 }

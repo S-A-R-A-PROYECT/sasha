@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\RolType;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
@@ -14,4 +15,13 @@ class Teacher extends Authenticatable
     use HasFactory, HasApiTokens;
     protected $fillable = ['name', 'last_name', 'email', 'password'];
     protected $hidden = ['password'];
+
+    public function getTypeAttribute()
+    {
+        if ($this->rol == RolType::Coordinator->value) {
+            return 'coordinator';
+        } else {
+            return 'teacher';
+        }
+    }
 }

@@ -24,6 +24,7 @@ class StudentResource extends JsonResource
             "uuid" => $this->uuid,
             "fingerprint" => $this->fingerprint,
             "document_type" => $this->document_type,
+            "link_qr_code" => asset(config('filesystems.disks.qr-student.url') . "/" . $this->uuid . '.png') ?? null,
             "last_login_ip" => $this->last_login_ip,
             "last_login_at" => $this->last_login_at,
             'type' => 'student',

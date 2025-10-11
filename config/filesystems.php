@@ -54,6 +54,29 @@ return [
             'visibility' => 'public',
         ],
 
+        'qr-student' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/qr/students'),
+            'url' => env('APP_URL') . '/storage/qr/students',
+            'visibility' => 'public',
+        ],
+
+
+        'qr-teacher' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/qr/teachers'),
+            'url' => env('APP_URL') . '/storage/qr/teachers',
+            'visibility' => 'public',
+        ],
+
+
+        'qr-developer' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/qr/developers'),
+            'url' => env('APP_URL') . '/storage/qr/developers',
+            'visibility' => 'public',
+        ],
+
         'profile_photo' => [
             'driver' => 'local',
             'root' => storage_path('app/public/profile_photo'),
