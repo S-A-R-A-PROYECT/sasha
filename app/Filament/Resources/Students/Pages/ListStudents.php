@@ -19,6 +19,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Spatie\Browsershot\Browsershot;
 use Spatie\LaravelPdf\Facades\Pdf;
 
 use function Spatie\LaravelPdf\Support\pdf;
@@ -68,6 +69,9 @@ class ListStudents extends ListRecords
                         // Generar el PDF con las credenciales
                         Pdf::view('pdf.credentials', ['credentials' => $credentials])
                             ->disk('public')
+                            ->withBrowsershot(function (Browsershot $browsershot) {
+                                $browsershot->noSandbox();
+                            })
                             ->save($fileName);
 
 
