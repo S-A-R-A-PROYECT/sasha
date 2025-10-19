@@ -85,6 +85,6 @@ class BarcodeCommand extends Command
             $disk->put($filename, $result->getString());
             $count++;
         }
-        $this->info("✅ Se han creado {$count} códigos de barras de estudiantes en el disco 'qr-students'.");
+        $this->info("✅ Se han creado {$count} códigos QR.");
     }
 }

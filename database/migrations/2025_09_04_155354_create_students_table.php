@@ -12,17 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('students', function (Blueprint $table) {
+
             $table->id();
 
-            $table->string("name"); // TEXTO
-            $table->string("last_name");
-            $table->string('email')->unique();
-            $table->string("password");
-            $table->integer("grade"); // NUMEROS ENTEROS
-            $table->string("fingerprint");
-            $table->uuid(); // Indentificadores universales
-            $table->integer("document")->unique()->nullable();
+            $table->string("document")->unique()->nullable();
             $table->string("document_type")->nullable();
+
+            $table->string("grade")->nullable(); // NUMEROS ENTEROS
+            $table->string("journey")->nullable();
+            $table->time("birthday")->nullable();
+
+            $table->string("name")->nullable(); // TEXTO
+            $table->string("last_name")->nullable();
+            $table->string("rh")->nullable();
+
+            $table->string("locality")->nullable();
+            $table->string("phone")->nullable();
+
+            // DATOS LOGIN
+            $table->string('email');
+            $table->string("password");
+            $table->string("fingerprint")->nullable();
+            $table->uuid(); // Indentificadores universales
 
             $table->string("last_login_ip")->nullable();
             $table->timestamp("last_login_at")->nullable();
@@ -30,6 +41,8 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.

@@ -15,7 +15,7 @@ class Student extends Authenticatable implements OAuthenticatable
 
 
     use HasFactory, HasApiTokens, Notifiable;
-    protected $fillable = ['name',  'document', 'password'];
+    protected $fillable = ['name',  'document', 'password', "last_name", "document_type", "grade", "fingerprint", "uuid", "journey", "birthday", "rh", "locality", "phone", "email", "last_login_ip", "last_login_at"];
     protected $hidden = ['password'];
 
     public function getAuthIdentifierName()

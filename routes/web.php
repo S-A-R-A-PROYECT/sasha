@@ -17,8 +17,9 @@ use Endroid\QrCode\ErrorCorrectionLevel;
 use Endroid\QrCode\Label\Label;
 use Endroid\QrCode\Logo\Logo;
 use Endroid\QrCode\RoundBlockSizeMode;
+use Spatie\LaravelPdf\Facades\Pdf;
 
-Route::get('/', Home::class)->name('home')->middleware('auth:student,teacher,developer');
+Route::get('/', Home::class)->name('home');
 
 
 // Inicios de sesion
@@ -29,27 +30,13 @@ Route::prefix('/login')->group(function () {
 })->middleware(RedirectIfAuthenticatedAny::class);
 
 
-Route::get('qr-code', function () {
-    $writer = new PngWriter();
+Route::get('pdf-test', function () {
+    $fileName = 'test_pdf_' . now()->format('Ymd_His') . '.pdf';
 
-    $qrCode = new QrCode(
-        data: 'Julian Andres Ramirez',
-        encoding: new Encoding('UTF-8'),
-    );
-
-    $logo = new Logo(
-        path: public_path() . '\imgs\2-bg.png',
-        resizeToWidth: 100,
-    );
-
-    $label = new Label(
-        text: 'Julian Andres Ramirez',
-        textColor: new Color(0, 0, 0)
-    );
-
-    $result = $writer->write($qrCode, $logo, $label);
-    return response($result->getString())->header('Content-type', 'image/png');
+    return Pdf::view('pdf.credentials')
+        ->name($fileName);
 });
+
 
 
 // Route::view('dashboard', 'dashboard')

@@ -13,7 +13,17 @@ class Teacher extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\TeachersFactory> */
     use HasFactory, HasApiTokens;
-    protected $fillable = ['name', 'last_name', 'email', 'password'];
+    protected $fillable = [
+        'uuid',
+        'name',
+        'last_name',
+        'email',
+        'grade',
+        'document',
+        'document_type',
+        'rol',
+        'password'
+    ];
     protected $hidden = ['password'];
 
     public function getTypeAttribute()

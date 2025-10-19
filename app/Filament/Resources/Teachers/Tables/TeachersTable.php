@@ -21,8 +21,6 @@ class TeachersTable
                 TextColumn::make('grade')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('pasword')
-                    ->searchable(),
                 TextColumn::make('document')
                     ->numeric()
                     ->sortable(),
