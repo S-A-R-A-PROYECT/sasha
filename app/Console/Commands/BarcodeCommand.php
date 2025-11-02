@@ -71,7 +71,7 @@ class BarcodeCommand extends Command
             );
 
             $logo = new Logo(
-                path: public_path() . '\imgs\2-bg.png',
+                path: public_path('imgs/2-bg.png'),
                 resizeToWidth: 100,
             );
 

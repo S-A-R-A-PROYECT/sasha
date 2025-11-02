@@ -17,7 +17,7 @@ use Livewire\Attributes\Validate;
 class Login extends Component
 {
 
-    #[Validate('required|int|email')]
+    #[Validate('required|email')]
     public int $email;
 
     #[Validate('required|string')]

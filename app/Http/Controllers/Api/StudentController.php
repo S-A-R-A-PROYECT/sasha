@@ -22,10 +22,12 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student $student)
+    public function show(string $student)
     {
+        $student = Student::where('uuid', $student)->orWhere('document', $student)->first();
         return new StudentResource($student);
     }
+
 
     /**
      * Store a newly created resource in storage.
