@@ -22,15 +22,25 @@ class Login extends Component
 
     #[Validate('required|string')]
     public string $password = '';
+    public bool $remember = false;
 
     #[Url]
     public $clientId;
-
+    #[Url]
+    public $redirect_uri;
+    #[Url]
+    public $response_type;
+    #[Url]
+    public $scope;
+    #[Url]
+    public $state;
+    #[Url]
+    public $passport;
     public $client;
 
     public function mount()
     {
-        $this->client = Client::findOrFail($this->clientId) ?? '';
+        $this->client = Client::findOrFail($this->clientId) ?? null;
     }
 
     public function login(): void
@@ -44,7 +54,19 @@ class Login extends Component
             request()->session()->regenerate();
 
 
-            $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+            if ($this->passport) {
+                $param = [
+                    'client_id' => $this->clientId,
+                    'redirect_uri' => $this->redirect_uri,
+                    'response_type' => $this->response_type,
+                    'scope' => $this->scope,
+                    'state' => $this->state,
+                ];
+
+                $this->redirectRoute('passport.authorizations.authorize', parameters: $param);
+            } else {
+                $this->redirectIntended(default: route('home', absolute: false), navigate: true);
+            }
         }
         RateLimiter::hit($this->throttleKey());
 

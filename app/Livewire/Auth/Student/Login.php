@@ -37,7 +37,6 @@ class Login extends Component
     public $state;
     #[Url]
     public $passport;
-
     public $client;
 
     public function mount()
