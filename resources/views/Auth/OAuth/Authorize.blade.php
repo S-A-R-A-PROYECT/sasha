@@ -50,7 +50,7 @@ $displayScopes = isset($scopes) ? $allScopes : $scopes;
 
 
                         <button type="submit"
-                            class="w-full py-2 px-4 bg-emerald-400 text-white rounded-lg font-medium shadow hover:bg-indigo-700 transition">
+                            class="w-full py-2 px-4 bg-emerald-400 hover:bg-emerald-500 text-white rounded-lg font-medium shadow transition">
                             ✔️ Autorizar
                         </button>
                     </form>

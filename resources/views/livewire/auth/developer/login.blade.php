@@ -1,4 +1,4 @@
-<div class="" style="--color: {{$client->teacher_color ?? '#FF0000'}}">
+<div class="" style="--color: {{$client->dev_color ?? '#FF0000'}}">
     <div class="min-h-screen flex flex-col">
         <div class="flex flex-1 flex-col md:flex-row">
             <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-10 bg-white">
