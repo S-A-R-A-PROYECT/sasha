@@ -18,7 +18,7 @@ class Login extends Component
 {
 
     #[Validate('required|email')]
-    public int $email;
+    public string $email;
 
     #[Validate('required|string')]
     public string $password = '';

@@ -89,7 +89,7 @@ return [
         // This is use how "users"
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
         'student' => [
             'driver' => 'eloquent',

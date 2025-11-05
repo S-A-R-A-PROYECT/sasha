@@ -29,6 +29,8 @@ class User extends Authenticatable implements OAuthenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
+        'document',
         'name',
         'email',
         'password',

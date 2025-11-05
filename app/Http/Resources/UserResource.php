@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             "uuid" => $this->uuid,
             'id' => $this->id,
             'name' => $this->name,
-            'last_name' => $this->last_name,
+            'last_name' => $this->last_name ?? null,
             'email' => $this->email,
             "grade" => $this->grade,
             "fingerprint" => $this->fingerprint,

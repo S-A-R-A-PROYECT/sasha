@@ -25,4 +25,4 @@ Route::apiResource('students', StudentController::class)
     ->middleware([CheckToken::using('students:read')]);
 
 Route::get('/me', [UserController::class, 'show'])
-    ->middleware('auth:api-student,api-teacher,api-developer');
+    ->middleware('auth:api-developer,api-student,api-teacher');

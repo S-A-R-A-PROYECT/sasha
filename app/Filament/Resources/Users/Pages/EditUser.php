@@ -27,6 +27,10 @@ class EditUser extends EditRecord
         } else {
             unset($data['password']); // no lo actualiza
         }
+        // Si el uuid es nulo, le asigna uno nuevo
+        if ($record->uuid === null) {
+            $data['uuid'] = \Illuminate\Support\Str::uuid();
+        }
 
         $record->update($data);
 

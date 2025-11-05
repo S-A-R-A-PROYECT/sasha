@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use \Illuminate\Support\Str;
 
 class SaveLoginInfo
 {
@@ -27,6 +28,11 @@ class SaveLoginInfo
 
         $user->last_login_ip = request()->ip();
         $user->last_login_at = now();
+
+        if (!$user->uuid) {
+            $user->uuid = Str::uuid();
+        }
+
         $user->save();
 
         Log::info("Usuario {$user->id} inició sesión desde " . request()->ip());

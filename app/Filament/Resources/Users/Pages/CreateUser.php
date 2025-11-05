@@ -15,8 +15,11 @@ class CreateUser extends CreateRecord
     protected function handleRecordCreation(array $data): Model
     {
         $user = User::create([
+            'uuid' => \Illuminate\Support\Str::uuid(),
             'name' => $data['name'],
             'email' => $data['email'],
+            'document' => $data["document"],
+            'document_type' => $data["document_type"] ?? 'c.c.',
             'password' => Hash::make($data['password']),
             'profile_photo_path' => $data['profile_photo_path'] ?? null,
         ]);
